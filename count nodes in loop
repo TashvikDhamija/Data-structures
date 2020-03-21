@@ -1,0 +1,23 @@
+int countNodesInLoop(Node* head){
+  Node* temp= head;
+  int count = 0;
+  while(temp != head){
+    count++;
+    temp=temp->next;
+  }
+}
+
+int countNodes(Node* head){
+  Node * s_temp=head,f_temp=head;
+
+  while(s_temp && f_temp && f_temp->next){
+    s_temp=s_temp->next;
+    f_temp=f_temp->next->next;
+
+    if(s_temp==f_temp){
+     return countNodesInLoop
+    }
+  }
+  return NULL;
+}
+
