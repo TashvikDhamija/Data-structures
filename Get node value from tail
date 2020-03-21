@@ -1,0 +1,23 @@
+/*
+ * For your reference:
+ *
+ * SinglyLinkedListNode {
+ *     int data;
+ *     SinglyLinkedListNode* next;
+ * };
+ *
+ */
+int getNode(SinglyLinkedListNode* head, int positionFromTail) {
+    int count=0;
+    SinglyLinkedListNode *temp = head;
+    while(temp != NULL){
+        temp = temp->next;
+        count++;
+    }
+
+    temp=head;
+    for(int i = 0; i < count-positionFromTail-1 ; i++ ){
+        temp = temp->next;
+    }
+    return temp->data;
+}
