@@ -52,7 +52,14 @@ int FindMin(BSTNode* root){
 	}
 	return FindMin(root->left);
 }
-
+int FindHeight(BSTNode* root){
+	if(root==NULL){
+		return -1;
+	}
+	int lmax=FindHeight(root->left);
+	int rmax=FindHeight(root->right);
+	return max(lmax,rmax)+1;
+}
 
 int main(){
   BSTNode* root = NULL;
