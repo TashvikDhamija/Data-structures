@@ -60,15 +60,31 @@ int FindHeight(BSTNode* root){
 	int rmax=FindHeight(root->right);
 	return max(lmax,rmax)+1;
 }
-
-int main(){
-  BSTNode* root = NULL;
-  root = InsertNode(root,23);
-  root = InsertNode(root,14);
-  root = InsertNode(root,12);
-  root = InsertNode(root,21);
-  root = InsertNode(root,8);
-  root = InsertNode(root,1);
-	cout<<FindMin(root);
-  return 0;
+BSTNode* Delete(BSTNode* root, int data){
+	if(root==NULL){return root;}
+	else if(root->data>data){Delete(root->left,data);}
+	else if(root->data<data){Delete(root->right,data);}
+	else{
+		if(root->left==NULL && root->right==NULL){
+			delete root;
+			root=NULL;
+		}
+		else if(root->left=NULL){
+			Node* temp = root;
+			root=root->right;
+			delete temp;
+		}
+		else if(root->right=NULL){
+			Node* temp = root;
+			root=root->left;
+			delete temp;
+		}
+		else{
+			BSTNode* temp = FindMin(root->left);
+			root->data=temp->data;
+			root->right=Delete(root->right,temp->data);
+		}
+		return root;
+	}
 }
+
