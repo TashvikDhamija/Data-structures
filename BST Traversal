@@ -1,0 +1,36 @@
+ void preOrder(Node *root) {
+        if(root==NULL){return;}
+        cout<<root->data<<" "<<flush;
+        preOrder(root->left);
+        preOrder(root->right);
+        
+    }
+void postOrder(Node *root) {
+        if(root==NULL){return;}
+        postOrder(root->left);
+        postOrder(root->right);
+        cout<<root->data<<" "<<flush;
+    }
+ void inOrder(Node *root) {
+        if(root == NULL){return;}
+        inOrder(root->left);
+        cout<<root->data<<" "<<flush;
+        inOrder(root->right);
+        
+    }
+void levelOrder(Node * root) {
+        queue <Node* > q;
+        q.push(root);
+        while(!q.empty()){
+            Node* temp=q.front();
+            cout<<temp->data<<" ";
+            if(temp->left!=NULL){
+                q.push(temp->left);
+            }
+            if(temp->right!=NULL){
+                q.push(temp->right);
+            }
+            q.pop();
+        }
+
+    }    
